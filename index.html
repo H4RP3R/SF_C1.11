@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>Timer</title>
+</head>
+
+<body>
+    <div id="backplate" class="shadow">
+        <div class="wrapper">
+            <div class="bttn-set">
+                <button class="square-bttn" id="min-minus" type="button">-</button>
+                <span>min</span>
+                <button class="square-bttn" id="min-plus" type="button">+</button>
+                <button class="square-bttn" id="sec-minus" type="button">-</button>
+                <span>sec</span>
+                <button class="square-bttn" id="sec-plus" type="button">+</button>
+            </div>
+            <h1 id="clock"></h1>
+            <div class="bttn-set">
+                <input type="text" id="time-input" name="" value="" placeholder="input time here">
+                <button type="button" id="send" name="send">send</button>
+            </div>
+            <div class="bttn-set">
+                <button type="button" id="start" name="start">start</button>
+                <button type="button" id="pause" name="pause">pause</button>
+                <button type="button" id="reset" name="reset">reset</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/small_query.js"></script>
+    <script src="JS/timer.js"></script>
+</body>
+
+</html>
