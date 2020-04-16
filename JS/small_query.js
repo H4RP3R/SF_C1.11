@@ -68,4 +68,14 @@ jQuery.prototype.value = function(text) {
     }
 }
 
+jQuery.prototype.disable = function() {
+    this.each(element => element.disabled = true);
+    return this
+}
+
+jQuery.prototype.enable = function() {
+    this.each(element => element.disabled = false);
+    return this
+}
+
 const $ = (e) => new jQuery(e);

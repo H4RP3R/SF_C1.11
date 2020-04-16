@@ -58,9 +58,11 @@ function subSec() {
 
 // Decreases the counter every second.
 function countdown() {
+    startBttn.disable();
     timer.timeout = setTimeout(function() {
         if (timer.minutes == 0 && timer.seconds == 0) {
             clock.text('stop')
+            startBttn.enable();
             return
         }
         if (timer.seconds > 0) {
@@ -76,6 +78,7 @@ function countdown() {
 
 function pause() {
     clearTimeout(timer.timeout);
+    startBttn.enable();
 }
 
 function reset() {
@@ -83,6 +86,7 @@ function reset() {
     timer.minutes = 0;
     timer.seconds = 0;
     timer.setTimer();
+    startBttn.enable();
 }
 
 // Formats a number with leading zeros.
@@ -106,7 +110,10 @@ function getInput() {
     // read input field
     const text = inputField.value();
     const res = validate(text);
-    // chekc value
+    // check value
+    if (text === '') {
+        return
+    }
     if (text && !res) {
         inputField.class('wrong');
     } else {
