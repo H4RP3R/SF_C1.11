@@ -54,7 +54,11 @@ jQuery.prototype.text = function(content) {
     }
 }
 
-jQuery.prototype.value = function() {
+jQuery.prototype.value = function(text) {
+    if (text || text === '') {
+        this.each(element => element.value = text);
+        return this;
+    }
     res = []
     if (this.elements.length > 1) {
         this.each(element => res.push(element.value))

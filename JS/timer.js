@@ -12,7 +12,7 @@ const startBttn = $('#start');
 const pauseBttn = $('#pause');
 const resettBttn = $('#reset');
 
-const regex = '[0-5][0-9][:,.,\,][0-5][0-9]';
+const regex = '[0-5][0-9][:,.,\,, ][0-5][0-9]';
 
 
 function Timer() {
@@ -23,6 +23,7 @@ function Timer() {
     this.setTimer = function() {
         this.clockString = `${pad(this.minutes, 2)}:${pad(this.seconds, 2)}`
         clock.text(this.clockString);
+        inputField.class('');
     }
 }
 
@@ -91,8 +92,32 @@ function pad(num, size) {
     return s;
 }
 
+function validate(input) {
+    const res = input.match(regex)
+    return res;
+}
+
+function toNubers(text) {
+    const res = text.split(/[,.: ]/);
+    return [Number(res[0]), Number(res[1])];
+}
+
 function getInput() {
-    console.log(inputField.value());
+    // read input field
+    const text = inputField.value();
+    const res = validate(text);
+    // chekc value
+    if (text && !res) {
+        inputField.class('wrong');
+    } else {
+        inputField.value('');
+        // convert value
+        nums = toNubers(res[0]);
+        // set time
+        timer.minutes = nums[0];
+        timer.seconds = nums[1];
+        timer.setTimer();
+    }
 }
 
 
